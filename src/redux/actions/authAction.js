@@ -1,3 +1,4 @@
+import { loginApi } from "@/services/authService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // login action
@@ -5,12 +6,12 @@ export const login = createAsyncThunk(
     "auth/login",
     async (payload, thunkApi) => {
         try {
-            // api call
+            const data = await loginApi(payload);
 
-            // return jwt token
+            return data.token;
         } catch (err) {
-            //   reject 
-            return thunkApi.rejectWithValue(err.message);
+            const errorData = err?.errors || err?.message || "Something went wrong";
+            return thunkApi.rejectWithValue(errorData);
         }
     }
 );
