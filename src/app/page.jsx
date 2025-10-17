@@ -1,19 +1,13 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-    const { isLoading, token, error } = useSelector((state) => state.auth);
+    const { token } = useSelector((state) => state.auth);
+    const router = useRouter();
 
-    if (isLoading) return "Loading";
-
-    if (token) {
-        return redirect("/products");
-    }
-    else {
-        return redirect("/login");
-    }
+    return token ? router.push("/products") : router.push("/login");
 };
 
 export default Home;

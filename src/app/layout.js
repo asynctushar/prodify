@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/components/common/Footer";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 import StoreProvider from "@/providers/StoreProvider";
 
@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
         <StoreProvider>
           {children}
         </StoreProvider>
-        <Footer />
       </body>
     </html>
   );

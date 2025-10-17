@@ -1,3 +1,6 @@
+"use client";
+
+import AuthGuard from '@/components/hoc/AuthGuard';
 import React from 'react';
 
 const Products = () => {
@@ -6,4 +9,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default AuthGuard(Products);
